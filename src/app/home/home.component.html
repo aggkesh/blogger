@@ -1,0 +1,20 @@
+<div>
+  <app-banner></app-banner>
+  <div class="row">
+    <div class="col-lg-10">
+        <ul id="navlist">
+          <li class="navelement"><a (click)="global()">Global Feed</a></li>
+        </ul>
+        <hr style="margin:0;width:80%; float: left;">
+        <div *ngFor="let article of articles | async" class="container" style="margin-top:5px;">
+          <p style="color:green;font-size:13px">{{article.author.username}}</p>
+          <p style="font-size:25px">{{article.title}}</p>
+          <div (click)="_loadArticle(article.slug)">
+            <p style="color: grey">{{article.description}}</p>
+            <p style="font-size:12px;">Read more...</p>
+          </div>
+          <hr style="margin: 3px;width:80%; float: left;">
+        </div>
+    </div>
+  </div>
+</div>

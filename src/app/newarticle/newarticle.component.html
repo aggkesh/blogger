@@ -1,0 +1,18 @@
+<div class="container">
+    <p *ngFor="let error of errors" style="color:red;">* {{ error }}</p>
+  <form [formGroup]="articledata" (ngSubmit)="_addArticle(articledata.value)">
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="articletitle" placeholder="Article Title" name="articletitle" style="height:60px;">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="aboutarticle" placeholder="What's this article about?" name="aboutarticle" style="height:40px;">
+    </div>
+    <div class="form-group">
+      <textarea type="text" class="form-control" formControlName="articledetail" placeholder="Write your article (in markdown)" name="articledetail" style="height:170px;"></textarea>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="articletag" placeholder="Enter tags" name="articletag" style="height:40px;">
+    </div>
+    <button type="submit" class="btn btn-default" value="Log In" style="float:right;background-color:green;color:white;width:200px;height:70px;font-size:20px;">Publish Article</button>
+  </form>
+</div>
