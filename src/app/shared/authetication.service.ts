@@ -25,7 +25,7 @@ export class AutheticationService {
                 }
               };
 
-    return this.http.post<IUser>("https://conduit.productionready.io/api/users/login",this.user, {
+    return this.http.post<IUser>("http://localhost:3000/api/users/login",this.user, {
               headers: new HttpHeaders()
                 .set('Content-Type', 'application/json')
             }).map(res => res.user);
@@ -39,7 +39,7 @@ export class AutheticationService {
                   "password": data.password
                 }
               };
-    return this.http.post<IUser>("https://conduit.productionready.io/api/users",this.user, {
+    return this.http.post<IUser>("http://localhost:3000/api/users",this.user, {
               headers: new HttpHeaders()
                 .set('Content-Type', 'application/json')
             }).map(res => res.user);
@@ -52,7 +52,7 @@ export class AutheticationService {
         token = 'Token '+localStorage.getItem('jwtToken');
     }
 
-    return this.http.get<IUser>("https://conduit.productionready.io/api/user",{
+    return this.http.get<IUser>("http://localhost:3000/api/users",{
       headers: new HttpHeaders({
         'Authorization': token
       })

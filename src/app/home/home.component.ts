@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
 
   global(){
     this.articles = this.articlesservice.getArticels();
+    this.articles.subscribe((data) => console.log(data));
   }
 
   _loadArticle(data){

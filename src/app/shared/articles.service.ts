@@ -30,7 +30,7 @@ export class ArticlesService {
   constructor(private http: HttpClient) { }
 
   getArticels(){
-    return this.http.get<IArticles>("https://conduit.productionready.io/api/articles").map(response => response.articles);
+    return this.http.get<IArticles>("http://localhost:3000/api/articles").map(response => response.articles);
   }
 
   addArticle(data){
@@ -49,7 +49,7 @@ export class ArticlesService {
         token = 'Token '+localStorage.getItem('jwtToken');
     }
 
-    return this.http.post<IArticle>("https://conduit.productionready.io/api/articles",article,{
+    return this.http.post<IArticle>("http://localhost:3000/api/articles",article,{
               headers: new HttpHeaders({
                 'Content-Type': 'application/json',
                 'Authorization': token
@@ -58,7 +58,7 @@ export class ArticlesService {
   }
 
   getArticle(articleslug){
-    return this.http.get<IArticle>("https://conduit.productionready.io/api/articles/"+articleslug).map(response => response.article)
+    return this.http.get<IArticle>("http://localhost:3000/api/articles/"+articleslug).map(response => response.article)
   }
 
   deleteArticle(articleslug){
@@ -68,7 +68,7 @@ export class ArticlesService {
         token = 'Token '+localStorage.getItem('jwtToken');
     }
 
-    return this.http.delete("https://conduit.productionready.io/api/articles/"+articleslug,{
+    return this.http.delete("http://localhost:3000/api/articles/"+articleslug,{
               headers: new HttpHeaders({
                 'Authorization': token
               })
@@ -91,7 +91,7 @@ export class ArticlesService {
         token = 'Token '+localStorage.getItem('jwtToken');
     }
 
-    return this.http.put<IArticle>("https://conduit.productionready.io/api/articles/"+slug,article,{
+    return this.http.put<IArticle>("http://localhost:3000/api/articles/"+slug,article,{
               headers: new HttpHeaders({
                 'Content-Type': 'application/json',
                 'Authorization': token
@@ -100,11 +100,11 @@ export class ArticlesService {
   }
 
   getuserArticle(username){
-    return this.http.get<IArticles>("https://conduit.productionready.io/api/articles/?author="+username).map(response => response.articles);
+    return this.http.get<IArticles>("http://localhost:3000/api/articles/?author="+username).map(response => response.articles);
   }
 
   getComment(slug){
-    return this.http.get<IComments>("https://conduit.productionready.io/api/articles/"+slug+"/comments").map(response => response.comments);
+    return this.http.get<IComments>("http://localhost:3000/api/articles/"+slug+"/comments").map(response => response.comments);
   }
 
   addComment(data,slug){
@@ -120,7 +120,7 @@ export class ArticlesService {
       token = 'Token '+localStorage.getItem('jwtToken');
     }
 
-    return this.http.post<IComment>("https://conduit.productionready.io/api/articles/"+slug+"/comments",comment,{
+    return this.http.post<IComment>("http://localhost:3000/api/articles/"+slug+"/comments",comment,{
               headers: new HttpHeaders({
                 'Content-Type': 'application/json',
                 'Authorization': token
@@ -134,7 +134,7 @@ export class ArticlesService {
     if(localStorage.getItem('jwtToken') != null){
         token = 'Token '+localStorage.getItem('jwtToken');
     }
-    return this.http.delete("https://conduit.productionready.io/api/articles/"+slug+"/comments/"+id,{
+    return this.http.delete("http://localhost:3000/api/articles/"+slug+"/comments/"+id,{
               headers: new HttpHeaders({
                 'Authorization': token
               })

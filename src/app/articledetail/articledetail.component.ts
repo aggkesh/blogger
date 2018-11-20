@@ -31,6 +31,8 @@ export class ArticledetailComponent implements OnInit {
 
     this.articleservice.getArticle(this.slug).subscribe((article:any) => {
       this.article = article;
+      console.log("keshav");
+      console.log(article);
       this.authetication._getCurrentUser().subscribe((data:any) => {
         if(article.author.username === data.username){
             this.userarticle = true;
